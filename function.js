@@ -3,35 +3,54 @@
  array.sort(function() {
   return Math.random() - Math.random();
 });
-console.log(array);
-
-//arrayの中身を並び替えた
 
 
-//引いた一枚目がarray[0],２枚めがarray[1]...という風にしたい
-//引いたカードを保存したいけど、、、
-//それかA11=array[0],A12=array[1]...
-//select(id)にしてるからできなさそう
+Array.prototype.divide = function(n){
+  var ary = this;
+  var idx = 0;
+  var results = [];
+  var length = ary.length;
 
-console.log(document.getElementById("Array").children);
+  while (idx + n < length){
+      var result = ary.slice(idx,idx+n)
+      results.push(result);
+      idx = idx + n
+  }
+
+  var rest = ary.slice(idx,length+1)
+  results.push(rest)
+  return results;
+}
+
+divideArray=array.divide(4);
+console.log(divideArray);
 
 
 
  var flag=-1;
  
 function select(id){
-  const element=document.getElementById(id)
+  
+
   if(flag==-1){
-    for(i=0;i<=15;i++){
-      const element = document.getElementById("Array").children[i].firstElementChild;
+    for(i=0;i<=3;i++){
+    for(j=0;j<=3;j++){
+      var c =divideArray[i][j];
+      // console.log(c);
+      var Id="A"+(i+1)+(j+1);
+    
+  
       // console.log(element.id);
-      if(id==element.id){
-      element.src="photo/0"+array[i]+".png";
+      if(id==Id){
+       var element=document.getElementById(id);
+      element.src="photo/0"+divideArray[i][j]+".png";
       // console.log(element.src);
-      console.log(array[i]);
+      // console.log(Id);
       }
     }
+    }
   }else if(flag==1){
+    const element=document.getElementById(id);
     element.src="photo/00.png";
   }
   flag=flag*-1;
