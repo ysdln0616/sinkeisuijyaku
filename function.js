@@ -13,17 +13,27 @@ console.log(array);
 //それかA11=array[0],A12=array[1]...
 //select(id)にしてるからできなさそう
 
+console.log(document.getElementById("Array").children);
+
+
 
  var flag=-1;
  
 function select(id){
-  console.log(flag);
+  const element=document.getElementById(id)
   if(flag==-1){
-    document.getElementById(id).src="photo/0"+array[0]+".png";
+    for(i=0;i<=15;i++){
+      const element = document.getElementById("Array").children[i].firstElementChild;
+      // console.log(element.id);
+      if(id==element.id){
+      element.src="photo/0"+array[i]+".png";
+      // console.log(element.src);
+      console.log(array[i]);
+      }
+    }
   }else if(flag==1){
-    document.getElementById(id).src="photo/00.png";
+    element.src="photo/00.png";
   }
   flag=flag*-1;
-  console.log(flag);
 }
-        
+
