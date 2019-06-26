@@ -19,6 +19,7 @@ Array.prototype.divide = function(n){
   return results;
 }
 divideArray=array.divide(4);
+// ググってコピペした
 console.log("Arrayの中身は答えです");
 console.log(divideArray);
 
@@ -41,14 +42,13 @@ var S2i=S2j=0;
           if(id==Id){
            var element1=document.getElementById(id);
           element1.src="photo/0"+divideArray[i][j]+".png";
-          S1=divideArray[i][j];
-          S1i=i+1;
-          S1j=j+1;
+          S1=divideArray[i][j];//S1はトランプの数字
+          S1i=i+1; //行
+          S1j=j+1; //列
           }
         }
       }
-
-  lock();
+  lock();//もう一回押してもひっくり返らないように
   first=false;
  }else{
   for(i=0;i<=3;i++){
@@ -58,19 +58,22 @@ var S2i=S2j=0;
        var element2=document.getElementById(id);
       element2.src="photo/0"+divideArray[i][j]+".png";
       S2=divideArray[i][j];
-      S2i=i+1;
-      S2j=j+1;
+      S2i=i+1; //行
+      S2j=j+1; //列
       }
     }
   }
   if(S1i==S2i&&S1j==S2j){
+    // 同じトランプを二回連続で選んだ時に消えないようにする
     lock();
   first=false;
   }else{
+    // 2個別のトランプを選んだ
    comparision();
    K++;
    document.getElementById("Kaisuu").innerText=K+"回"
    if(P==8){
+     // ペアが８組できた時＝全部できた時
     document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
     document.getElementById("pair").innerText="";
     document.getElementById("reload").innerText="リロードしてね";
@@ -81,10 +84,11 @@ var S2i=S2j=0;
 }
 
 function lock(){
+  //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
 function comparision(){
-  if(S1==S2){
+  if(S1==S2){//１枚目と２枚目が同じ数字になった時
 
     var Element1=document.getElementById("A"+S1i+S1j);
     var Element2=document.getElementById("A"+S2i+S2j);
