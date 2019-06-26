@@ -23,6 +23,7 @@ Array.prototype.divide = function(n){
 }
 
 divideArray=array.divide(4);
+console.log("Arrayの中身は答えです");
 console.log(divideArray);
 
 
@@ -44,8 +45,6 @@ var B;
       Element2.src="photo/00.png";
     
      }
-   
-
    for(i=0;i<=3;i++){
         for(j=0;j<=3;j++){
           var Id="A"+(i+1)+(j+1);
@@ -55,14 +54,8 @@ var B;
           S1=divideArray[i][j];
           S1i=i+1;
           S1j=j+1;
-          console.log("S1="+S1);
-        
-          console.log("S1i="+S1i);
-      console.log("S1j="+S1j);
-
           
-
-
+        
           
           }
         }
@@ -84,12 +77,7 @@ var B;
       S2=divideArray[i][j];
       S2i=i+1;
       S2j=j+1;
-      console.log("S1="+S1);
-      console.log("S2="+S2);
-      console.log("S1i="+S1i);
-      console.log("S1j="+S1j);
-      console.log("S2i="+S2i);
-      console.log("S2j="+S2j);
+      
 
       }
     }
@@ -101,6 +89,11 @@ var B;
    comparision();
    K++;
    document.getElementById("Kaisuu").innerText=K+"回"
+   if(P==8){
+    document.getElementById("Kaisuu").innerText="記録"+K+"回";
+    document.getElementById("pair").innerText="";
+
+   }
     }
  }
 }
@@ -112,39 +105,18 @@ function comparision(){
   if(S1==S2){
 
     var Element1=document.getElementById("A"+S1i+S1j);
-    Element1.src="photo/000.png";
     var Element2=document.getElementById("A"+S2i+S2j);
-    Element2.src="photo/000.png";
+    Element1.src=Element2.src="photo/clean.png";
+    Element1.onclick=Element2.onclick="";
+  
+    
+
     P++;
-   document.getElementById("pair").innerText=P+"組"
+   document.getElementById("pair").innerText=P+"組";
+   
+
+  
   
   }
   first=true;
 }
-
-
-
- 
-
-
-
-
-
- 
-// function select(id){
-//   if(flag==-1){
-//     for(i=0;i<=3;i++){
-//     for(j=0;j<=3;j++){
-//       var Id="A"+(i+1)+(j+1);
-//       if(id==Id){
-//        var element=document.getElementById(id);
-//       element.src="photo/0"+divideArray[i][j]+".png";
-//       }
-//     }
-//     }
-//   }else if(flag==1){
-//     const element=document.getElementById(id);
-//     element.src="photo/00.png";
-//   }
-//   flag=flag*-1;
-// }
