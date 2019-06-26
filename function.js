@@ -26,9 +26,10 @@ console.log(divideArray);
   var P=0;
   var first=true;
 var S1=S2=0;
+var S2i=S2j=0;
  function select(id){
    if(first==true){
-    if(S1!=S2){
+    if(S1!=S2){ //2n+1枚目を引いた時(n>=1)
       var Element1=document.getElementById("A"+S1i+S1j);
       Element1.src="photo/00.png";
       var Element2=document.getElementById("A"+S2i+S2j);
@@ -59,7 +60,6 @@ var S1=S2=0;
       S2=divideArray[i][j];
       S2i=i+1;
       S2j=j+1;
-
       }
     }
   }
@@ -73,6 +73,8 @@ var S1=S2=0;
    if(P==8){
     document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
     document.getElementById("pair").innerText="";
+    document.getElementById("reload").innerText="リロードしてね";
+
    }
     }
  }

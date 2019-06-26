@@ -1,0 +1,26 @@
+
+.border {
+    border-bottom: solid 20px #9d9cff;
+}
+.Title{
+    position: relative;
+    top: 20px;
+    left: 40px;
+    color: #fff;
+    font-size: 30px;
+}
+.Sin h2{
+    position: relative;
+    top: 18px;
+    left: 40px;
+    color: #fff;
+    font-size: 24px;
+}
+.Sin img{
+    position: relative;
+    top: 20px;
+    left: 5px;
+    margin: 5px;
+    /* color: #fff; */
+    /* font-size: 24px; */
+}
