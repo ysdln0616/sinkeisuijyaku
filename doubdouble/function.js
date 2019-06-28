@@ -35,20 +35,23 @@ console.log(divideArray);
 let S1=S2=0;
 let S2i=S2j=0;
 
-function PC(){
-  CP1();
+function PCselect(){
+  console.log(firstcp);
+  if(firstcp==true){
+        CP1();
         CP2();
-        comparisioncp();
+        firstcp=false;
+}else{
+  comparisioncp();
+  firstcp=true;
 }
- function select(id){
+}
+function select(id){
 
    if(first==true){
      if(second==false){
         comparision();
-        // CP1();
-        // CP2();
-        // comparisioncp();
-     
+        
     }else{ 
       for(i=0;i<=3;i++){
         for(j=0;j<=3;j++){
@@ -105,7 +108,7 @@ function comparision(){
     Element1.src=Element2.src="photo/clean.png";
     Element1.onclick=Element2.onclick="";
     P++;
-   document.getElementById("pair").innerText=P+"組";
+   document.getElementById("pair").innerText="あなた　"+P+"組";
   
   }else{ //2n+1枚目を引いた時(n>=1)
   let Element1=document.getElementById("A"+S1i+S1j);
@@ -135,18 +138,24 @@ function CP1(){
   
   console.log("1枚目", S1icp, S1jcp);
   console.log(document.getElementById("A"+S1icp+S1jcp).src);
-  // console.log(document.getElementById("A"+S1icp+S1jcp).src)
-
+  
    if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
      break;
    }
   }
-  for(let R=1;R=16;R++){
+  
+  
+      document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
+      S1cp=divideArray[S1icp-1][S1jcp-1];
+      
+  }
+
+  function CP2(){
+    for(let R=1;R=16;R++){
   S2icp=Math.floor(Math.random()*Math.floor(4)+1);
   S2jcp=Math.floor(Math.random()*Math.floor(4)+1);
   console.log("2枚目", S2icp, S2jcp);
   console.log(document.getElementById("A"+S2icp+S2jcp).src);
-  // console.log(document.getElementById("A"+S2icp+S2jcp).src)
    if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
      if(S1icp==S2icp&&S1jcp==S2jcp){
      }else{
@@ -154,18 +163,8 @@ function CP1(){
      }
    }
   }
-  
-      document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
-      S1cp=divideArray[S1icp-1][S1jcp-1];
-      lock();
-      
-  }
-
-  function CP2(){
       document.getElementById("A"+S2icp+S2jcp).src="photo/0"+divideArray[S2icp-1][S2jcp-1]+".png";
       S2cp=divideArray[S2icp-1][S2jcp-1];
-      lock();
-    
   }
 
   function comparision(){
@@ -176,7 +175,7 @@ function CP1(){
       Element1.src=Element2.src="photo/clean.png";
       Element1.onclick=Element2.onclick="";
       P++;
-     document.getElementById("pair").innerText=P+"組";
+     document.getElementById("pair").innerText="あなた　"+P+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
@@ -210,7 +209,7 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).src="photo/clean.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/clean.png";
       Pcp++;
-     document.getElementById("cppair").innerText=Pcp+"組";
+     document.getElementById("cppair").innerText="CP "+Pcp+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
@@ -231,10 +230,6 @@ function CP1(){
 
     }else{ //2n+1枚目を引いた時(n>=1)
       
-      let Element1=document.getElementById("A"+S1icp+S1jcp);
-      let Element2=document.getElementById("A"+S2icp+S2jcp);
-
-      Element1.src=Element2.src="photo/clean.png";
       
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
