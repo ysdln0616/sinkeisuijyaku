@@ -26,16 +26,30 @@ console.log(divideArray);
   var K=0;
   var P=0;
   var first=true;
+  var second=true;
 var S1=S2=0;
 var S2i=S2j=0;
  function select(id){
    if(first==true){
+     if(second==false){
+      if(S1==S2){//１枚目と２枚目が同じ数字になった時
+
+        var Element1=document.getElementById("A"+S1i+S1j);
+        var Element2=document.getElementById("A"+S2i+S2j);
+        Element1.src=Element2.src="photo/clean.png";
+        Element1.onclick=Element2.onclick="";
+        P++;
+       document.getElementById("pair").innerText=P+"組";
+      
+      }
     if(S1!=S2){ //2n+1枚目を引いた時(n>=1)
       var Element1=document.getElementById("A"+S1i+S1j);
       Element1.src="photo/00.png";
       var Element2=document.getElementById("A"+S2i+S2j);
       Element2.src="photo/00.png";
      }
+     second=true;
+    }else{
    for(i=0;i<=3;i++){
         for(j=0;j<=3;j++){
           var Id="A"+(i+1)+(j+1);
@@ -50,6 +64,7 @@ var S2i=S2j=0;
       }
   lock();//もう一回押してもひっくり返らないように
   first=false;
+    }
  }else{
   for(i=0;i<=3;i++){
     for(j=0;j<=3;j++){
@@ -69,7 +84,8 @@ var S2i=S2j=0;
   first=false;
   }else{
     // 2個別のトランプを選んだ
-   comparision();
+  //  comparision();
+  
    K++;
    document.getElementById("Kaisuu").innerText=K+"回"
    if(P==8){
@@ -79,25 +95,29 @@ var S2i=S2j=0;
     document.getElementById("reload").innerText="リロードしてね";
 
    }
+   first=true;
+   second=false;
     }
- }
+  }
+
 }
 
 function lock(){
   //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
-function comparision(){
-  if(S1==S2){//１枚目と２枚目が同じ数字になった時
+// function comparision(){
+  // if(S1==S2){//１枚目と２枚目が同じ数字になった時
 
-    var Element1=document.getElementById("A"+S1i+S1j);
-    var Element2=document.getElementById("A"+S2i+S2j);
-    Element1.src=Element2.src="photo/clean.png";
-    Element1.onclick=Element2.onclick="";
-    P++;
-   document.getElementById("pair").innerText=P+"組";
+  //   var Element1=document.getElementById("A"+S1i+S1j);
+  //   var Element2=document.getElementById("A"+S2i+S2j);
+  //   Element1.src=Element2.src="photo/clean.png";
+  //   Element1.onclick=Element2.onclick="";
+  //   P++;
+  //  document.getElementById("pair").innerText=P+"組";
   
-  }
-  first=true;
-}
+  // }
+//   first=true;
+//   second=false;
+// }
 
