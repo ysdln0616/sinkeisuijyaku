@@ -3,7 +3,6 @@ let array=[];
  array.sort(function() {
   return Math.random() - Math.random();
 });
-
 Array.prototype.divide = function(n){
   var ary = this;
   var idx = 0;
@@ -23,6 +22,12 @@ divideArray=array.divide(4);
 console.log("Arrayの中身は答えです");
 console.log(divideArray);
 
+
+
+// もう一回自分のターん
+
+
+
   let K=0;
   let P=0;
   let Pcp=0;
@@ -31,8 +36,6 @@ console.log(divideArray);
   let firstcp=true;
   let Kcp=0;
  
-
-
 
 
 let S1=S2=0;
@@ -56,17 +59,13 @@ function PCkaisuu(){
 }
 
 
-
-
 function select(id){
   
 
    if(first==true){
      if(second==false){
         comparision();
-        if(P+Pcp<8){
-        PCselect();
-        }
+        
         
     }else{ 
       for(i=0;i<=3;i++){
@@ -194,6 +193,10 @@ function CP1(){
       Element1.onclick=Element2.onclick="";
       P++;
      document.getElementById("you").innerText="あなた　"+K+"組 "+P+"組";
+     
+
+    
+      
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      if(P>Pcp){
@@ -214,6 +217,11 @@ function CP1(){
     Element1.src="photo/00.png";
     let Element2=document.getElementById("A"+S2i+S2j);
     Element2.src="photo/00.png";
+
+    if(P+Pcp<8){
+      PCselect();
+      }
+
    }
    second=true;
   }
@@ -228,6 +236,8 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).onclick=document.getElementById("A"+S2icp+S2jcp).onclick="";
       Pcp++;
      document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
+
+     
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      if(P>Pcp){
@@ -240,7 +250,11 @@ function CP1(){
       document.getElementById("Uor").innerText="引き分け";
      }
      document.getElementById("reload").innerText="リロードしてね";
-    }else{document.getElementById("Uor").innerText="あなたの番です";}
+    }else{
+        PCselect();
+    }
+        
+      
     
 
     }else{ //2n+1枚目を引いた時(n>=1)
@@ -249,6 +263,7 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
       document.getElementById("Uor").innerText="あなたの番です";
+      
     
    }
    
