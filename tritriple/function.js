@@ -162,10 +162,16 @@ let PCsecond=true;
 function stPC(){
  var l = brray.length;
  if(PCfirst===true){
+     let D;
+     if(l-12>=0){
+         D=l-12;
+     }else{
+        D=0;
+     }
   
-    for(i=0;i<=l;i++){
-      for(j=0;j<=l;j++){
-        for(k=0;k<=l;k++){
+    for(i=D;i<=l;i++){
+      for(j=D;j<=l;j++){
+        for(k=D;k<=l;k++){
           if(PCsecond===true){
             if(drray[i]===drray[j]&&i<=j){
               if(drray[j]===drray[k]&&j<=k){

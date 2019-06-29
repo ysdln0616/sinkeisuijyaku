@@ -38,7 +38,7 @@ let drray=[];//S
  
   
 let S1=S2=0;
-let S2i=S2j=0;
+
 let q=0;
 
 
@@ -47,8 +47,8 @@ function PCselect(){
   document.getElementById("Uor").innerText="PCの番です";
 
     setTimeout(stPC, 1000);
-    setTimeout(PCkaisuu,1000);
-    setTimeout(comparisioncp, 2000);
+    setTimeout(PCkaisuu,1500);
+    setTimeout(comparisioncp, 2500);
     PCfirst=true;
     PCsecond=true;
    
@@ -146,14 +146,17 @@ function stPC(){
             S1icp=brray[i];
             S1jcp=crray[i];
             S1cp=drray[i];
-            document.getElementById("A"+brray[j]+crray[j]).src="photo/0"+drray[j]+".png";
+           
+              document.getElementById("A"+brray[j]+crray[j]).src="photo/0"+drray[j]+".png";
             S2icp=brray[j];
             S2jcp=crray[j];
             S2cp=drray[j];
-
             PCfirst=false;
             PCsecond=false;
 
+              
+    
+            
          
 
   
@@ -165,9 +168,11 @@ function stPC(){
   }
     if(PCfirst===true){
       CP1();
-      CP2();
+      setTimeout(CP2,500)
     }
 }
+
+
 
   function CP1(){
 
