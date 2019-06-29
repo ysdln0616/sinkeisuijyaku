@@ -29,7 +29,9 @@ console.log(divideArray);
   let first=true;
   let second=true;
   let firstcp=true;
-  var returnSec = 1000;
+  let Kcp=0;
+ 
+
 
 
 
@@ -41,17 +43,28 @@ function PCselect(){
   document.getElementById("Uor").innerText="PCの番です";
 
     setTimeout("CP1()", 1000);
-    setTimeout("CP2()", 2000);
-    setTimeout("comparisioncp()", 3000);
-
+    setTimeout("CP2()", 1500);
+    setTimeout("PCkaisuu()",1500);
+    setTimeout("comparisioncp()", 2500);
+   
 }
 
+function PCkaisuu(){
+  Kcp++;
+  document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
+  
+}
+
+
+
+
 function select(id){
-  document.getElementById("Uor").innerText="あなたの番です";
+  
 
    if(first==true){
      if(second==false){
         comparision();
+        PCselect();
         
     }else{ 
       for(i=0;i<=3;i++){
@@ -89,12 +102,11 @@ function select(id){
   }else{
     // 2個別のトランプを選んだ
    K++;
-   document.getElementById("Kaisuu").innerText=K+"回"
+   document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組"
    
    first=true;
    second=false;
    
-
    //ここにcpの動きを入れる
     }
   }
@@ -104,6 +116,7 @@ function lock(){
   //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
+
 function comparision(){
   if(S1==S2){//１枚目と２枚目が同じ数字になった時
 
@@ -112,7 +125,7 @@ function comparision(){
     Element1.src=Element2.src="photo/clean.png";
     Element1.onclick=Element2.onclick="";
     P++;
-   document.getElementById("pair").innerText="あなた　"+P+"組";
+   document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
   
   }else{ //2n+1枚目を引いた時(n>=1)
   let Element1=document.getElementById("A"+S1i+S1j);
@@ -213,10 +226,9 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).src="photo/clean.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/clean.png";
       Pcp++;
-     document.getElementById("cppair").innerText="PC "+Pcp+"組";
+     document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
-     document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
      if(P>Pcp){
      document.getElementById("pair").innerText="あなたの勝ち";
      }
@@ -226,8 +238,6 @@ function CP1(){
      if(Pcp==P){
       document.getElementById("pair").innerText="引き分け";
      }
-
-
      document.getElementById("reload").innerText="リロードしてね";
     }
     
@@ -239,14 +249,10 @@ function CP1(){
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
     
    }
+   document.getElementById("Uor").innerText="あなたの番です";
   }
   
-  // トランプの柄がphoto/00.pngになってるものを選ぶ
-  // 正誤判定
-  // あってたらPcp++
-  // ユーザーのターンに戻す
-  // 間違ってたらユーザーのターンに戻す
-  
+ 
 
 
 
