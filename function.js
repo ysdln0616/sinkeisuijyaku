@@ -1,4 +1,4 @@
- var array=[];
+ let array=[];
    array.push(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8);
  array.sort(function() {
   return Math.random() - Math.random();
@@ -23,38 +23,22 @@ divideArray=array.divide(4);
 console.log("Arrayの中身は答えです");
 console.log(divideArray);
 
-  var K=0;
-  var P=0;
-  var first=true;
-  var second=true;
-var S1=S2=0;
-var S2i=S2j=0;
+  let K=0;
+  let P=0;
+  let first=true;
+  let second=true;
+let S1=S2=0;
+let S2i=S2j=0;
  function select(id){
    if(first==true){
      if(second==false){
-      if(S1==S2){//１枚目と２枚目が同じ数字になった時
-
-        var Element1=document.getElementById("A"+S1i+S1j);
-        var Element2=document.getElementById("A"+S2i+S2j);
-        Element1.src=Element2.src="photo/clean.png";
-        Element1.onclick=Element2.onclick="";
-        P++;
-       document.getElementById("pair").innerText=P+"組";
-      
-      }
-    if(S1!=S2){ //2n+1枚目を引いた時(n>=1)
-      var Element1=document.getElementById("A"+S1i+S1j);
-      Element1.src="photo/00.png";
-      var Element2=document.getElementById("A"+S2i+S2j);
-      Element2.src="photo/00.png";
-     }
-     second=true;
+      comparision();
     }else{
    for(i=0;i<=3;i++){
         for(j=0;j<=3;j++){
-          var Id="A"+(i+1)+(j+1);
+          let Id="A"+(i+1)+(j+1);
           if(id==Id){
-           var element1=document.getElementById(id);
+           let element1=document.getElementById(id);
           element1.src="photo/0"+divideArray[i][j]+".png";
           S1=divideArray[i][j];//S1はトランプの数字
           S1i=i+1; //行
@@ -68,9 +52,9 @@ var S2i=S2j=0;
  }else{
   for(i=0;i<=3;i++){
     for(j=0;j<=3;j++){
-      var Id="A"+(i+1)+(j+1);
+      let Id="A"+(i+1)+(j+1);
       if(id==Id){
-       var element2=document.getElementById(id);
+       let element2=document.getElementById(id);
       element2.src="photo/0"+divideArray[i][j]+".png";
       S2=divideArray[i][j];
       S2i=i+1; //行
@@ -84,8 +68,7 @@ var S2i=S2j=0;
   first=false;
   }else{
     // 2個別のトランプを選んだ
-  //  comparision();
-  
+
    K++;
    document.getElementById("Kaisuu").innerText=K+"回"
    if(P==8){
@@ -106,18 +89,22 @@ function lock(){
   //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
-// function comparision(){
-  // if(S1==S2){//１枚目と２枚目が同じ数字になった時
+function comparision(){
+  if(S1==S2){//１枚目と２枚目が同じ数字になった時
 
-  //   var Element1=document.getElementById("A"+S1i+S1j);
-  //   var Element2=document.getElementById("A"+S2i+S2j);
-  //   Element1.src=Element2.src="photo/clean.png";
-  //   Element1.onclick=Element2.onclick="";
-  //   P++;
-  //  document.getElementById("pair").innerText=P+"組";
+    let Element1=document.getElementById("A"+S1i+S1j);
+    let Element2=document.getElementById("A"+S2i+S2j);
+    Element1.src=Element2.src="photo/clean.png";
+    Element1.onclick=Element2.onclick="";
+    P++;
+   document.getElementById("pair").innerText=P+"組";
   
-  // }
-//   first=true;
-//   second=false;
-// }
+  }else{ //2n+1枚目を引いた時(n>=1)
+  let Element1=document.getElementById("A"+S1i+S1j);
+  Element1.src="photo/00.png";
+  let Element2=document.getElementById("A"+S2i+S2j);
+  Element2.src="photo/00.png";
+ }
+ second=true;
+}
 
