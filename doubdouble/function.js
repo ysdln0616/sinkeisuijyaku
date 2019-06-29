@@ -24,17 +24,17 @@ console.log(divideArray);
 
 
 
-// もう一回自分のターん
-
 
 
   let K=0;
+  let Kcp=0;
   let P=0;
   let Pcp=0;
   let first=true;
   let second=true;
   let firstcp=true;
-  let Kcp=0;
+  let flag=1;
+ 
  
 
 
@@ -42,7 +42,7 @@ let S1=S2=0;
 let S2i=S2j=0;
 
 function PCselect(){
-  console.log(firstcp);
+
   document.getElementById("Uor").innerText="PCの番です";
 
     setTimeout("CP1()", 1000);
@@ -60,6 +60,7 @@ function PCkaisuu(){
 
 
 function select(id){
+  if(flag===1){
   
 
    if(first==true){
@@ -112,39 +113,18 @@ function select(id){
     }
   }
 }
+}
 
 function lock(){
   //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
 
-function comparision(){
-  if(S1==S2){//１枚目と２枚目が同じ数字になった時
-
-    let Element1=document.getElementById("A"+S1i+S1j);
-    let Element2=document.getElementById("A"+S2i+S2j);
-    Element1.src=Element2.src="photo/clean.png";
-    Element1.onclick=Element2.onclick="";
-    P++;
-   document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
-  
-  }else{ //2n+1枚目を引いた時(n>=1)
-  let Element1=document.getElementById("A"+S1i+S1j);
-  Element1.src="photo/00.png";
-  let Element2=document.getElementById("A"+S2i+S2j);
-  Element2.src="photo/00.png";
- }
- second=true;
-}
-
-
-
-
 
 let S1icp;
 let S1jcp;
 let S2icp;
-let S2jcp;;
+let S2jcp;
 let S1cp;
 let S2cp;
 
@@ -155,7 +135,6 @@ function CP1(){
   S1jcp=Math.floor(Math.random()*Math.floor(4)+1);
   
   console.log("CP1()1枚目", S1icp, S1jcp);
-  console.log(document.getElementById("A"+S1icp+S1jcp).src);
   
    if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
      break;
@@ -172,7 +151,6 @@ function CP1(){
   S2icp=Math.floor(Math.random()*Math.floor(4)+1);
   S2jcp=Math.floor(Math.random()*Math.floor(4)+1);
   console.log("CP2()2枚目", S2icp, S2jcp);
-  console.log(document.getElementById("A"+S2icp+S2jcp).src);
    if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
      if(S1icp==S2icp&&S1jcp==S2jcp){
      }else{
@@ -195,8 +173,6 @@ function CP1(){
      document.getElementById("you").innerText="あなた　"+K+"組 "+P+"組";
      
 
-    
-      
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      if(P>Pcp){
@@ -209,14 +185,17 @@ function CP1(){
        document.getElementById("Uor").innerText="引き分け";
       }
      document.getElementById("reload").innerText="リロードしてね";
- 
     }
+
+    flag=1;
     
     }else{ //2n+1枚目を引いた時(n>=1)
     let Element1=document.getElementById("A"+S1i+S1j);
     Element1.src="photo/00.png";
     let Element2=document.getElementById("A"+S2i+S2j);
     Element2.src="photo/00.png";
+
+    flag=-1;
 
     if(P+Pcp<8){
       PCselect();
@@ -251,9 +230,10 @@ function CP1(){
      }
      document.getElementById("reload").innerText="リロードしてね";
     }else{
+      
         PCselect();
     }
-        
+    flag=-1;
       
     
 
@@ -263,15 +243,10 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
       document.getElementById("Uor").innerText="あなたの番です";
+      flag=1;
       
     
    }
    
   }
-  
- 
-
-
-
-
 

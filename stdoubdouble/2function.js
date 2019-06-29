@@ -23,35 +23,38 @@ console.log("Arrayの中身は答えです");
 console.log(divideArray);
 let brray=[];//Si
 let crray=[];//Sj
-let drray=[];//c
+let drray=[];//S
 
 
 
   let K=0;
+  let Kcp=0;
   let P=0;
   let Pcp=0;
   let first=true;
   let second=true;
   let firstcp=true;
-  let Kcp=0;
+  let flag=1;
  
-
-
+  
 let S1=S2=0;
 let S2i=S2j=0;
 let q=0;
+
 
 function PCselect(){
   
   document.getElementById("Uor").innerText="PCの番です";
 
-    setTimeout("stPC()", 1000);
-    setTimeout("PCkaisuu()",1000);
-    setTimeout("comparisioncp()", 2000);
+    setTimeout(stPC, 1000);
+    setTimeout(PCkaisuu,1000);
+    setTimeout(comparisioncp, 2000);
     PCfirst=true;
     PCsecond=true;
    
 }
+
+
 
 function PCkaisuu(){
   Kcp++;
@@ -61,19 +64,18 @@ function PCkaisuu(){
 
 
 function select(id){
-
+  if(flag===1){
    if(first==true){
      if(second==false){
-       console.log("比較を実行");
         comparision();
         
-    }else{ 
-      for(i=0;i<=3;i++){//1枚目
-        for(j=0;j<=3;j++){
-          let Id="A"+(i+1)+(j+1);
-          if(id==Id){
-           let element1=document.getElementById(id);
-          element1.src="photo/0"+divideArray[i][j]+".png";
+      }else{ 
+        for(i=0;i<=3;i++){//1枚目
+          for(j=0;j<=3;j++){
+            let Id="A"+(i+1)+(j+1);
+            if(id==Id){
+              let element1=document.getElementById(id);
+               element1.src="photo/0"+divideArray[i][j]+".png";
           S1=divideArray[i][j];//S1はトランプの数字
           S1i=i+1; //行
           S1j=j+1; //列
@@ -113,14 +115,12 @@ function select(id){
     }
   }
 }
+}
 
 function lock(){
   //もう一回押してもひっくり返らないように
   element1="photo/0"+S1+".png";
 }
-
-
-
 
 let S1icp;
 let S1jcp;
@@ -206,8 +206,6 @@ function stPC(){
 
 
 
-
-
   function comparision(){
     if(S1==S2){//１枚目と２枚目が同じ数字になった時
   
@@ -233,8 +231,6 @@ function stPC(){
     }
 
 
-    console.log(drray);
-
     for(i=0;i<=50;i++){
       if(S1==drray[i]){
         brray.splice(i,1);
@@ -248,6 +244,8 @@ function stPC(){
     console.log("c="+crray);
     console.log("d="+drray);
     
+    flag=1;
+    
 
 
 
@@ -260,7 +258,7 @@ function stPC(){
 
 
 
-    console.log(drray);
+   
 
     brray.push(S1i,S2i);
     console.log("b="+brray);
@@ -268,13 +266,15 @@ function stPC(){
     console.log("c="+crray);
     drray.push(S1,S2);
     console.log("d="+drray);
-    console.log(drray);
+   
 
 
 
     if(P+Pcp<8){
+      flag=-1;
       PCselect();
       }
+
    }
    second=true;
   }
@@ -320,6 +320,8 @@ function stPC(){
     console.log("b="+brray);
     console.log("c="+crray);
     console.log("d="+drray);
+
+     flag=-1;
    
   
       
@@ -330,7 +332,6 @@ function stPC(){
     console.log("b="+brray);
     crray.push(S1jcp,S2jcp);
     console.log("c="+crray);
-   
     drray.push(S1cp,S2cp);
     console.log("d="+drray);
 
@@ -339,6 +340,8 @@ function stPC(){
       
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
+      flag=1;
+      
       document.getElementById("Uor").innerText="あなたの番です";
       
     
