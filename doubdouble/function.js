@@ -64,7 +64,9 @@ function select(id){
    if(first==true){
      if(second==false){
         comparision();
+        if(P+Pcp<8){
         PCselect();
+        }
         
     }else{ 
       for(i=0;i<=3;i++){
@@ -160,8 +162,7 @@ function CP1(){
      break;
    }
   }
-  
-  
+
       document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
       S1cp=divideArray[S1icp-1][S1jcp-1];
       
@@ -192,18 +193,17 @@ function CP1(){
       Element1.src=Element2.src="photo/clean.png";
       Element1.onclick=Element2.onclick="";
       P++;
-     document.getElementById("pair").innerText="あなた　"+P+"組";
+     document.getElementById("you").innerText="あなた　"+K+"組 "+P+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
-     document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
      if(P>Pcp){
-      document.getElementById("pair").innerText="あなたの勝ち";
+      document.getElementById("Uor").innerText="あなたの勝ち";
       }
       if(Pcp>P){
-       document.getElementById("pair").innerText="あなたの負け";
+       document.getElementById("Uor").innerText="あなたの負け";
       }
       if(Pcp==P){
-       document.getElementById("pair").innerText="引き分け";
+       document.getElementById("Uor").innerText="引き分け";
       }
      document.getElementById("reload").innerText="リロードしてね";
  
@@ -225,21 +225,22 @@ function CP1(){
       
       document.getElementById("A"+S1icp+S1jcp).src="photo/clean.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/clean.png";
+      document.getElementById("A"+S1icp+S1jcp).onclick=document.getElementById("A"+S2icp+S2jcp).onclick="";
       Pcp++;
      document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      if(P>Pcp){
-     document.getElementById("pair").innerText="あなたの勝ち";
+     document.getElementById("Uor").innerText="あなたの勝ち";
      }
      if(Pcp>P){
-      document.getElementById("pair").innerText="あなたの負け";
+      document.getElementById("Uor").innerText="あなたの負け";
      }
      if(Pcp==P){
-      document.getElementById("pair").innerText="引き分け";
+      document.getElementById("Uor").innerText="引き分け";
      }
      document.getElementById("reload").innerText="リロードしてね";
-    }
+    }else{document.getElementById("Uor").innerText="あなたの番です";}
     
 
     }else{ //2n+1枚目を引いた時(n>=1)
@@ -247,9 +248,10 @@ function CP1(){
       
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
+      document.getElementById("Uor").innerText="あなたの番です";
     
    }
-   document.getElementById("Uor").innerText="あなたの番です";
+   
   }
   
  
