@@ -29,6 +29,7 @@ console.log(divideArray);
   let first=true;
   let second=true;
   let firstcp=true;
+  var returnSec = 1000;
 
 
 
@@ -37,16 +38,16 @@ let S2i=S2j=0;
 
 function PCselect(){
   console.log(firstcp);
-  if(firstcp==true){
-        CP1();
-        CP2();
-        firstcp=false;
-}else{
-  comparisioncp();
-  firstcp=true;
+  document.getElementById("Uor").innerText="PCの番です";
+
+    setTimeout("CP1()", 1000);
+    setTimeout("CP2()", 2000);
+    setTimeout("comparisioncp()", 3000);
+
 }
-}
+
 function select(id){
+  document.getElementById("Uor").innerText="あなたの番です";
 
    if(first==true){
      if(second==false){
@@ -92,6 +93,9 @@ function select(id){
    
    first=true;
    second=false;
+   
+
+   //ここにcpの動きを入れる
     }
   }
 }
@@ -136,7 +140,7 @@ function CP1(){
   S1icp=Math.floor(Math.random()*Math.floor(4)+1);
   S1jcp=Math.floor(Math.random()*Math.floor(4)+1);
   
-  console.log("1枚目", S1icp, S1jcp);
+  console.log("CP1()1枚目", S1icp, S1jcp);
   console.log(document.getElementById("A"+S1icp+S1jcp).src);
   
    if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
@@ -154,7 +158,7 @@ function CP1(){
     for(let R=1;R=16;R++){
   S2icp=Math.floor(Math.random()*Math.floor(4)+1);
   S2jcp=Math.floor(Math.random()*Math.floor(4)+1);
-  console.log("2枚目", S2icp, S2jcp);
+  console.log("CP2()2枚目", S2icp, S2jcp);
   console.log(document.getElementById("A"+S2icp+S2jcp).src);
    if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
      if(S1icp==S2icp&&S1jcp==S2jcp){
@@ -209,7 +213,7 @@ function CP1(){
       document.getElementById("A"+S1icp+S1jcp).src="photo/clean.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/clean.png";
       Pcp++;
-     document.getElementById("cppair").innerText="CP "+Pcp+"組";
+     document.getElementById("cppair").innerText="PC "+Pcp+"組";
      if(P+Pcp==8){
       // ペアが８組できた時＝全部できた時
      document.getElementById("Kaisuu").innerText="🎉記録"+K+"回🎉";
