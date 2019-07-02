@@ -198,13 +198,13 @@ function stPC(){
                         PCfirst=false;
                         PCsecond=false;
   
-             }
+                    }
+                  }
+                }
+              }
             }
-           }
           }
-         }
         }
-       }
       }
      }
     }

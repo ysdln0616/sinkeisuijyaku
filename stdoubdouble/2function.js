@@ -236,7 +236,7 @@ function stPC(){
     }
 
 
-    for(i=0;i<=50;i++){
+    for(i=0;i<=100;i++){
       if(S1==drray[i]){
         brray.splice(i,1);
         crray.splice(i,1);
@@ -275,7 +275,7 @@ function stPC(){
 
 
 
-    if(P+Pcp<8){
+    if(P+Pcp<B12){
       flag=-1;
       PCselect();
       }
@@ -296,7 +296,7 @@ function stPC(){
      document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
 
      
-     if(P+Pcp==8){
+     if(P+Pcp==B12){
       // ペアが８組できた時＝全部できた時
      if(P>Pcp){
      document.getElementById("Uor").innerText="あなたの勝ち";
@@ -312,7 +312,7 @@ function stPC(){
         PCselect();
     }
 
-    for(i=0;i<=50;i++){
+    for(i=0;i<=100;i++){
       if(S1cp==drray[i]){
         brray.splice(i,1);
         crray.splice(i,1);
