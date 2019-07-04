@@ -3,17 +3,20 @@
 // 3 4or6
 // cp有無
 
-let array=[];
-let PCfirst=true;
-let PCsecond=true;
-let Skip=true;
-let brray=[];//Si
-let crray=[];//Sj
-let drray=[];//S
-let K=0;
-let P=0;
-let Pcp=0;
-let first=1;
+let array=[];//トランプに数字を割り当てるための配列
+let PCfirst=true;//めくられたトランプが既出のものかどうかのflag
+let PCsecond=true;//for文を3回繰り返してるのでgoto文として,
+let Skip=true;//スキップの関数をだす時のためのflag,間違えてSkip=falseの時にスキップする
+let brray=[];//裏返したトランプの第i-1行目を記録する,ペアになったら要素として削除し、中にはペアになっていないものだけにしている
+let crray=[];//裏返したトランプの第j-1列目を記録する,ペアになったら要素として削除し、中にはペアになっていないものだけにしている
+let drray=[];//裏返したトランプの(i-1,j-1)の数字を記録する,ペアになったら要素として削除し、中にはペアになっていないものだけにしている
+let K=0;//トランプをめくった回数(1人の時のみ)
+let P=0;//やっている人がペアにした回数
+let Pcp=0;//PCがペアにした回数
+let first=1;//同じ関数のなかで何枚目かで処理を変えるためのflag
+//１枚目の時first=1
+//２枚目の時first=0
+//３枚目の時first=-1
 let second=true;
 let firstcp=true;
 let flag=-1;
@@ -324,7 +327,6 @@ function stPC(){
   var l = brray.length;
   if(B11==2){
     if(PCfirst==true){
-      console.log(PCfirst);
       for(i=0;i<=l;i++){
         for(j=0;j<=l;j++){
           if(PCsecond==true){
@@ -631,7 +633,6 @@ function skip(){
   if(Skip==true){
     document.getElementById("B14").src="photo/clean.png";
   }else{
-    console.log("BBBBBBBBBBBBBBBB");
     let Element1=document.getElementById("A"+S1i+S1j);
     Element1.src="photo/00.png";
     let Element2=document.getElementById("A"+S2i+S2j);
