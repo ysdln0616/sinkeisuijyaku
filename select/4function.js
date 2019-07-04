@@ -1,19 +1,25 @@
 // 2or3
 // 2 6or8
 // 3 4or6
+// cp有無
 
 let array=[];
-// let B11;
-// let B12;
-// var S1icp;
-// var S1jcp;
-// var S2icp;
-// var S2jcp;
-// var S1cp;
-// var S2cp;
 let PCfirst=true;
 let PCsecond=true;
 let Skip=true;
+let brray=[];//Si
+let crray=[];//Sj
+let drray=[];//S
+let K=0;
+let P=0;
+let Pcp=0;
+let first=1;
+let second=true;
+let firstcp=true;
+let flag=-1;
+let S1=S2=S3=0;
+let B13;
+
 
 
 function divide(){
@@ -43,6 +49,7 @@ function preselect2(){
   document.getElementById("B11").onclick="";
   document.getElementById("B12").onclick=preselect26;
   document.getElementById("B13").onclick=preselect28;
+  document.getElementById("you").innerText="組の数を選んでください";
   B11=2;
   B=4;
 }
@@ -64,9 +71,12 @@ function preselect26(){
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("B13").src="photo/clean.png";
+  document.getElementById("B13").src="photo/alone.png";
+  document.getElementById("B13").onclick=alone;
+  document.getElementById("B14").src="photo/couple.png";
+  document.getElementById("B14").onclick=couple;
   document.getElementById("B12").onclick="";
-  document.getElementById("B13").onclick="";
+  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
   divide();
   divideArray=array.divide(3);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -92,9 +102,12 @@ function preselect28(){
     }
   }
   document.getElementById("B12").src="photo/8pair.png";
-  document.getElementById("B13").src="photo/clean.png";
+  document.getElementById("B13").src="photo/alone.png";
+  document.getElementById("B13").onclick=alone;
+  document.getElementById("B14").src="photo/couple.png";
+  document.getElementById("B14").onclick=couple;
   document.getElementById("B12").onclick="";
-  document.getElementById("B13").onclick="";
+  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
   divide();
   divideArray=array.divide(4);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -110,6 +123,7 @@ function preselect3(){
   document.getElementById("B11").onclick="";
   document.getElementById("B12").onclick=preselect34;
   document.getElementById("B13").onclick=preselect36;
+  document.getElementById("you").innerText="組の数を選んでください";
   B11=3;
   B=3;
 }
@@ -131,9 +145,12 @@ function preselect34(){
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("B13").src="photo/clean.png";
+  document.getElementById("B13").src="photo/alone.png";
+  document.getElementById("B13").onclick=alone;
+  document.getElementById("B14").src="photo/couple.png";
+  document.getElementById("B14").onclick=couple;
   document.getElementById("B12").onclick="";
-  document.getElementById("B13").onclick="";
+  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
   divide();
   divideArray=array.divide(4);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -157,9 +174,12 @@ function preselect36(){
     document.getElementById(N).onclick="";
   }
   document.getElementById("B12").src="photo/6pair.png";
-  document.getElementById("B13").src="photo/clean.png";
+  document.getElementById("B13").src="photo/alone.png";
+  document.getElementById("B13").onclick=alone;
+  document.getElementById("B14").src="photo/couple.png";
+  document.getElementById("B14").onclick=couple;
   document.getElementById("B12").onclick="";
-  document.getElementById("B13").onclick="";        
+  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";        
   divide();
   divideArray=array.divide(6);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -167,33 +187,38 @@ function preselect36(){
   B12=6;
 }
 
-let brray=[];//Si
-let crray=[];//Sj
-let drray=[];//S
-let K=0;
-let Kcp=0;
-let P=0;
-let Pcp=0;
-let first=1;
-let second=true;
-let firstcp=true;
-let flag=1;
-let S1=S2=S3=0;
-let q=0;
+
+function alone(){
+  console.log("AAAA");
+  B13=1;
+  document.getElementById("you").innerText="0回　0組";
+  document.getElementById("B13").onclick="";
+  document.getElementById("B14").src="photo/clean.png";
+  document.getElementById("B14").onclick="";
+  flag=1;
+}
+
+
+function couple(){
+  B13=2;
+  console.log("BBBB");
+  document.getElementById("you").innerText="あなた　0組";
+  document.getElementById("cp").innerText="PC　0組";
+  document.getElementById("B13").src="photo/couple.png";
+  document.getElementById("B13").onclick="";
+  document.getElementById("B14").src="photo/clean.png";
+  document.getElementById("B14").onclick="";
+  document.getElementById("Uor").innerText="あなたの番です";
+  flag=1;
+}
+
 
 function PCselect(){
   document.getElementById("Uor").innerText="PCの番です";
   setTimeout(stPC, 1000);
-  setTimeout(PCkaisuu,1500);
-  setTimeout(comparisioncp, 2500);
+  setTimeout(comparisioncp, 4500);
   PCfirst=true;
   PCsecond=true; 
-}
-
-
-function PCkaisuu(){
-  Kcp++;
-  document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
 }
 
 
@@ -237,12 +262,15 @@ function select(id){
           first=0;
         }else{
           K++;
-          document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組"
+          if(B13==1){
+            document.getElementById("you").innerText=+K+"回 "+P+"組";
+          }else if(B13==2){
+            document.getElementById("you").innerText="あなた　"+P+"組";
+          }
           first=1;
           second=false;
         }
-      }
-      if(B11==3){
+      }else if(B11==3){
         comparisionfor2();//2枚を比べる
         first=-1;
         if(S1i==S2i&&S1j==S2j){// 同じトランプを二回連続で選んだ時に消えないようにする
@@ -250,7 +278,6 @@ function select(id){
           first=0;
         }
       }
-      
     }else if(first=-1){
       for(i=0;i<B;i++){//3枚目
         for(j=0;j<B12;j++){
@@ -264,12 +291,16 @@ function select(id){
           }
         }
       }
-      if(S2i==S3i&&S2j==S3j){// 同じトランプを二回連続で選んだ時に消えないようにする
+      if(S1i==S3i&&S1j==S3j||S2i==S3i&&S2j==S3j){// 同じトランプを二回連続で選んだ時に消えないようにする
         lock2();
         first=-1;
       }else{// 3個別のトランプを選んだ
         K++;
-        document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組"
+        if(B13==1){
+          document.getElementById("you").innerText=+K+"回 "+P+"組";
+        }else if(B13==2){
+          document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
+        }
         first=1;
         second=false;
         document.getElementById("B14").src="photo/clean.png";
@@ -358,8 +389,8 @@ function stPC(){
       }
       if(PCfirst===true){
         CP1();
-        setTimeout(CP2,500)
-        setTimeout(CP3,1000)
+        setTimeout(CP2,1000)
+        setTimeout(CP3,2000)
       }
     }
     PCfirst=true;
@@ -393,6 +424,7 @@ function CP1(){
   document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
   S1cp=divideArray[S1icp-1][S1jcp-1];
 }
+
 
 function CP2(){
   var B2=B12/2;
@@ -448,6 +480,7 @@ function CP3(){
 
 
 function comparision(){
+  console.log(K);
   if(B11==2){
     if(S1==S2){//１枚目と２枚目が同じ数字になった時
       let Element1=document.getElementById("A"+S1i+S1j);
@@ -455,19 +488,24 @@ function comparision(){
       Element1.src=Element2.src="photo/clean.png";
       Element1.onclick=Element2.onclick="";
       P++;
-      document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
-      if(P+Pcp==B12){// ペアが８組できた時＝全部できた時
+      if(B13==1){
+        document.getElementById("you").innerText=K+"回 "+P+"組";
+        if(P==B12){// ペアが全部できた時
+            document.getElementById("you").innerText="🎉🎉記録　"+K+"回🎉🎉";
+        }
+      }else if(B13==2){
+        document.getElementById("you").innerText="あなた　"+P+"組"; 
+      if(P+Pcp==B12){// ペアが全部できた時
         if(P>Pcp){
-          document.getElementById("Uor").innerText="あなたの勝ち";
-        }
-        if(Pcp>P){
-          document.getElementById("Uor").innerText="あなたの負け";
-        }
-        if(Pcp==P){
+          document.getElementById("Uor").innerText="🎉🎉あなたの勝ち🎉🎉";
+        }else if(Pcp>P){
+          document.getElementById("Uor").innerText="😭😭あなたの負け😭😭";
+        }else if(Pcp==P){
           document.getElementById("Uor").innerText="引き分け";
         }
         document.getElementById("reload").innerText="リロードしてね";
       }
+    }
       for(i=0;i<=100;i++){
         if(S1==drray[i]){
           brray.splice(i,1);
@@ -480,7 +518,7 @@ function comparision(){
       console.log("c="+crray);
       console.log("d="+drray);
       flag=1;
-    }else{ //2n+1枚目を引いた時(n>=1)
+    }else{ //１枚めと二枚めが違う数字の時
       let Element1=document.getElementById("A"+S1i+S1j);
       Element1.src="photo/00.png";
       let Element2=document.getElementById("A"+S2i+S2j);
@@ -491,14 +529,26 @@ function comparision(){
       console.log("c="+crray);
       drray.push(S1,S2);
       console.log("d="+drray);
+      if(B13==1){
+        document.getElementById("you").innerText=+K+"回 "+P+"組";
+      }else if(B13==2){ 
+        document.getElementById("you").innerText="あなた　"+P+"組";
+      }
       if(P+Pcp<B12){
-        flag=-1;
-        PCselect();
+        console.log("ffffffffff")
+        console.log(B13)
+        if(B13==2){
+          flag=-1;
+          console.log("EEEEEEEEEEE")
+          PCselect();
+        }else if(B13==1){
+          flag=1;
+          first=1;
+        }
       }
     }
     second=true;
-  }
-  if(B11==3){
+  }else if(B11==3){
     if(S1===S2&&S2===S3){//１枚目と２枚目と３枚目が同じ数字になった時
       let Element1=document.getElementById("A"+S1i+S1j);
       let Element2=document.getElementById("A"+S2i+S2j);
@@ -506,19 +556,24 @@ function comparision(){
       Element1.src=Element2.src=Element3.src="photo/clean.png";
       Element1.onclick=Element2.onclick=Element3.onclick="";
       P++;
-      document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
-      if(P+Pcp==B12){// ペアが5組できた時＝全部できた時
+      if(B13==1){
+        document.getElementById("you").innerText=K+"回 "+P+"組";
+        if(P==B12){// ペアが全部できた時
+            document.getElementById("you").innerText="🎉🎉記録　"+K+"回🎉🎉";
+        }
+      }else if(B13==2){
+        document.getElementById("you").innerText="あなた　"+P+"組"; 
+      if(P+Pcp==B12){// ペアが全部できた時
         if(P>Pcp){
-        document.getElementById("Uor").innerText="あなたの勝ち";
-        }
-        if(Pcp>P){
-        document.getElementById("Uor").innerText="あなたの負け";
-        }
-        if(Pcp=P){
+          document.getElementById("Uor").innerText="🎉🎉あなたの勝ち🎉🎉";
+        }else if(Pcp>P){
+          document.getElementById("Uor").innerText="😭😭あなたの負け😭😭";
+        }else if(Pcp==P){
           document.getElementById("Uor").innerText="引き分け";
         }
         document.getElementById("reload").innerText="リロードしてね";
       }
+    }
       for(i=0;i<=100;i++){
         if(S1==drray[i]){
           brray.splice(i,1);
@@ -531,7 +586,7 @@ function comparision(){
       console.log("c="+crray);
       console.log("d="+drray);
       flag=1; 
-    }else{ //2n+1枚目を引いた時(n>=1)
+    }else{ //3まいが違う数字の時
       let Element1=document.getElementById("A"+S1i+S1j);
       Element1.src="photo/00.png";
       let Element2=document.getElementById("A"+S2i+S2j);
@@ -546,7 +601,13 @@ function comparision(){
       console.log("d="+drray);
       if(P+Pcp<B12){
         flag=-1;
-        PCselect();
+        if(B13==2){
+          PCselect();
+          flag=-1;
+        }else if(B13==1){
+          flag=1;
+          first=1;
+        }
       }
     }
     second=true;
@@ -556,9 +617,12 @@ function comparision(){
 
 function comparisionfor2(){
   if(S1!=S2){//１枚目と２枚目が違う
-    document.getElementById("B14").src="photo/skip.png";
-    document.getElementById("B14").onclick=skip;
-    Skip=false;
+    if(B13==1){
+    }else if(B13==2){
+      document.getElementById("B14").src="photo/skip.png";
+      document.getElementById("B14").onclick=skip;
+      Skip=false;
+    }
   }
 }
 
@@ -595,15 +659,13 @@ function comparisioncp(){
       document.getElementById("A"+S2icp+S2jcp).src="photo/clean.png";
       document.getElementById("A"+S1icp+S1jcp).onclick=document.getElementById("A"+S2icp+S2jcp).onclick="";
       Pcp++;
-      document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
+      document.getElementById("cp").innerText="PC "+Pcp+"組";
       if(P+Pcp==B12){// ペアが８組できた時＝全部できた時
         if(P>Pcp){
-          document.getElementById("Uor").innerText="あなたの勝ち";
-        }
-        if(Pcp>P){
-          document.getElementById("Uor").innerText="あなたの負け";
-        }
-        if(Pcp==P){
+          document.getElementById("Uor").innerText="🎉🎉あなたの勝ち🎉🎉";
+        }else if(Pcp>P){
+          document.getElementById("Uor").innerText="😭😭あなたの負け😭😭";
+        }else if(Pcp=P){
           document.getElementById("Uor").innerText="引き分け";
         }
         document.getElementById("reload").innerText="リロードしてね";
@@ -622,7 +684,7 @@ function comparisioncp(){
       console.log("c="+crray);
       console.log("d="+drray);
       flag=-1;
-    }else{ //2n+1枚目を引いた時(n>=1)
+    }else{ //1枚目と２枚目が違う時
       brray.push(S1icp,S2icp);
       console.log("b="+brray);
       crray.push(S1jcp,S2jcp);
@@ -642,15 +704,13 @@ function comparisioncp(){
       document.getElementById("A"+S3icp+S3jcp).src="photo/clean.png";
       document.getElementById("A"+S1icp+S1jcp).onclick=document.getElementById("A"+S2icp+S2jcp).onclick=document.getElementById("A"+S3icp+S3jcp).onclick="";
       Pcp++;
-      document.getElementById("cp").innerText="PC "+Kcp+"回 "+Pcp+"組";
-      if(P+Pcp==B12){// ペアが5組できた時＝全部できた時
+      document.getElementById("cp").innerText="PC "+Pcp+"組";
+      if(P+Pcp==B12){// ペアが全部できた時
         if(P>Pcp){
-          document.getElementById("Uor").innerText="あなたの勝ち";
-        }
-        if(Pcp>P){
-          document.getElementById("Uor").innerText="あなたの負け";
-        }
-        if(Pcp=P){
+          document.getElementById("Uor").innerText="🎉🎉あなたの勝ち🎉🎉";
+        }else if(Pcp>P){
+          document.getElementById("Uor").innerText="😭😭あなたの負け😭😭";
+        }else if(Pcp==P){
           document.getElementById("Uor").innerText="引き分け";
         }
         document.getElementById("reload").innerText="リロードしてね";
