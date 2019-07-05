@@ -17,15 +17,14 @@ let first=1;//同じ関数のなかで何枚目かで処理を変えるための
 //１枚目の時first=1
 //２枚目の時first=0
 //３枚目の時first=-1
-let second=true;
-let firstcp=true;
-let flag=-1;
-let S1=S2=S3=0;
-let B13;
+let second=true;//選んだカードを比べる関数を入れるためのflag,second=falseの時に比べる
+let flag=-1;//PCが動いてる時めくれないようにするためのflag,flag=1の時めくれてそれ以外ではめくれない
+let S1=S2=S3=0;//1,2,3枚目のトランプに書いてある数字
+let B13;//B13=1の時1人,B13=2の時2人の設定になるようにするためのflag
 
 
 
-function divide(){
+function divide(){//割り振った数字を3or4列に分けるための関数,ググった
   array.sort(function() {
     return Math.random() - Math.random();
   });
@@ -46,13 +45,14 @@ function divide(){
 }
 
 
-function preselect2(){
+function preselect2(){//２枚を選んだ時
   document.getElementById("B12").src="photo/6pair.png";
   document.getElementById("B13").src="photo/8pair.png";
   document.getElementById("B11").onclick="";
   document.getElementById("B12").onclick=preselect26;
   document.getElementById("B13").onclick=preselect28;
   document.getElementById("you").innerText="組の数を選んでください";
+  document.getElementById("reload").innerText="";
   B11=2;
   B=4;
 }
@@ -219,7 +219,7 @@ function couple(){
 function PCselect(){
   document.getElementById("Uor").innerText="PCの番です";
   setTimeout(stPC, 1000);
-  setTimeout(comparisioncp, 4500);
+  setTimeout(comparisioncp, 3000);
   PCfirst=true;
   PCsecond=true; 
 }
