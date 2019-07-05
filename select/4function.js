@@ -1,11 +1,8 @@
-// 2or3
-// 2 6or8
-// 3 4or6
-// cp有無
+// 先攻後攻
 
 let array=[];//トランプに数字を割り当てるための配列
 let PCfirst=true;//めくられたトランプが既出のものかどうかのflag
-let PCsecond=true;//for文を3回繰り返してるのでgoto文として,
+let PCsecond=true;//for文を3回繰り返してるのでgoto文として
 let Skip=true;//スキップの関数をだす時のためのflag,間違えてSkip=falseの時にスキップする
 let brray=[];//裏返したトランプの第i-1行目を記録する,ペアになったら要素として削除し、中にはペアになっていないものだけにしている
 let crray=[];//裏返したトランプの第j-1列目を記録する,ペアになったら要素として削除し、中にはペアになっていないものだけにしている
@@ -21,7 +18,6 @@ let second=true;//選んだカードを比べる関数を入れるためのflag,
 let flag=-1;//PCが動いてる時めくれないようにするためのflag,flag=1の時めくれてそれ以外ではめくれない
 let S1=S2=S3=0;//1,2,3枚目のトランプに書いてある数字
 let B13;//B13=1の時1人,B13=2の時2人の設定になるようにするためのflag
-
 
 
 function divide(){//割り振った数字を3or4列に分けるための関数,ググった
@@ -45,20 +41,21 @@ function divide(){//割り振った数字を3or4列に分けるための関数,�
 }
 
 
-function preselect2(){//２枚を選んだ時
-  document.getElementById("B12").src="photo/6pair.png";
-  document.getElementById("B13").src="photo/8pair.png";
-  document.getElementById("B11").onclick="";
-  document.getElementById("B12").onclick=preselect26;
-  document.getElementById("B13").onclick=preselect28;
+function preselect2(){//２枚組を選んだ時
+  document.getElementById("b13").style.visibility="visible";
+  document.getElementById("b12").innerText="6組";
+  document.getElementById("b13").innerText="8組";
+  document.getElementById("b11").onclick="";
+  document.getElementById("b12").onclick=preselect26;
+  document.getElementById("b13").onclick=preselect28;
   document.getElementById("you").innerText="組の数を選んでください";
-  document.getElementById("reload").innerText="";
+  document.getElementById("Description").innerText="6組:1~6のトランプ　8組:1~8のトランプ";
   B11=2;
   B=4;
 }
 
 
-function preselect26(){
+function preselect26(){//2枚かつ6組
   for(i=1;i<=6;i++){
     array.push(i,i)
   }
@@ -74,12 +71,14 @@ function preselect26(){
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("B13").src="photo/alone.png";
-  document.getElementById("B13").onclick=alone;
-  document.getElementById("B14").src="photo/couple.png";
-  document.getElementById("B14").onclick=couple;
-  document.getElementById("B12").onclick="";
+  document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").onclick="";
+  document.getElementById("b13").innerText="1人";
+  document.getElementById("b13").onclick=alone;
+  document.getElementById("b14").innerText="2人";
+  document.getElementById("b14").onclick=couple;
   document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
+  document.getElementById("Description").innerText="2人:PCと対戦　一回めくったカードを記憶しています";
   divide();
   divideArray=array.divide(3);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -88,7 +87,7 @@ function preselect26(){
 }
 
 
-function preselect28(){
+function preselect28(){//2枚かつ8組
   for(i=1;i<=8;i++){
     array.push(i,i)
   }
@@ -104,13 +103,15 @@ function preselect28(){
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("B12").src="photo/8pair.png";
-  document.getElementById("B13").src="photo/alone.png";
-  document.getElementById("B13").onclick=alone;
-  document.getElementById("B14").src="photo/couple.png";
-  document.getElementById("B14").onclick=couple;
-  document.getElementById("B12").onclick="";
+  document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").innerText="8組";
+  document.getElementById("b12").onclick="";
+  document.getElementById("b13").innerText="1人";
+  document.getElementById("b13").onclick=alone;
+  document.getElementById("b14").innerText="2人";
+  document.getElementById("b14").onclick=couple;
   document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
+  document.getElementById("Description").innerText="2人:PCと対戦　一回めくったカードを記憶しています";
   divide();
   divideArray=array.divide(4);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -120,19 +121,21 @@ function preselect28(){
 
 
 function preselect3(){
-  document.getElementById("B11").src="photo/3mai.png";
-  document.getElementById("B12").src="photo/4pair.png";
-  document.getElementById("B13").src="photo/6pair.png";
-  document.getElementById("B11").onclick="";
-  document.getElementById("B12").onclick=preselect34;
-  document.getElementById("B13").onclick=preselect36;
+  document.getElementById("b13").style.visibility="visible";
+  document.getElementById("b11").innerText="3枚";
+  document.getElementById("b12").innerText="4組";
+  document.getElementById("b13").innerText="6組";
+  document.getElementById("b11").onclick="";
+  document.getElementById("b12").onclick=preselect34;
+  document.getElementById("b13").onclick=preselect36;
   document.getElementById("you").innerText="組の数を選んでください";
+  document.getElementById("Description").innerText="4組:1~4のトランプ　6組:1~6のトランプ";
   B11=3;
   B=3;
 }
 
 
-function preselect34(){
+function preselect34(){//3枚かつ4組
   for(i=1;i<=4;i++){
     array.push(i,i,i)
   }
@@ -148,12 +151,14 @@ function preselect34(){
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("B13").src="photo/alone.png";
-  document.getElementById("B13").onclick=alone;
-  document.getElementById("B14").src="photo/couple.png";
-  document.getElementById("B14").onclick=couple;
-  document.getElementById("B12").onclick="";
+  document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").onclick="";
+  document.getElementById("b13").innerText="1人";
+  document.getElementById("b13").onclick=alone;
+  document.getElementById("b14").innerText="2人";
+  document.getElementById("b14").onclick=couple;
   document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";
+  document.getElementById("Description").innerText="2人:PCと対戦　一回めくったカードを記憶しています";
   divide();
   divideArray=array.divide(4);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -162,7 +167,7 @@ function preselect34(){
 }
 
 
-function preselect36(){
+function preselect36(){//3枚かつ6組
   for(i=1;i<=6;i++){
     array.push(i,i,i)
   }
@@ -176,13 +181,15 @@ function preselect36(){
     N="A4"+i;
     document.getElementById(N).onclick="";
   }
-  document.getElementById("B12").src="photo/6pair.png";
-  document.getElementById("B13").src="photo/alone.png";
-  document.getElementById("B13").onclick=alone;
-  document.getElementById("B14").src="photo/couple.png";
-  document.getElementById("B14").onclick=couple;
-  document.getElementById("B12").onclick="";
-  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください";        
+  document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").innerText="6組";
+  document.getElementById("b12").onclick="";
+  document.getElementById("b13").innerText="1人";
+  document.getElementById("b13").onclick=alone;
+  document.getElementById("b14").innerText="2人";
+  document.getElementById("b14").onclick=couple;
+  document.getElementById("you").innerText="1人でやるか2人でやるか選んでください"
+  document.getElementById("Description").innerText="2人:PCと対戦　一回めくったカードを記憶しています";        
   divide();
   divideArray=array.divide(6);// ググってコピペした
   console.log("Arrayの中身は答えです");
@@ -192,34 +199,36 @@ function preselect36(){
 
 
 function alone(){
-  console.log("AAAA");
   B13=1;
   document.getElementById("you").innerText="0回　0組";
-  document.getElementById("B13").onclick="";
-  document.getElementById("B14").src="photo/clean.png";
-  document.getElementById("B14").onclick="";
+  document.getElementById("b13").onclick="";
+  document.getElementById("b14").innerText="";
+  document.getElementById("b14").onclick="";
+  document.getElementById("b14").style.visibility="hidden";
   flag=1;
 }
 
 
 function couple(){
   B13=2;
-  console.log("BBBB");
   document.getElementById("you").innerText="あなた　0組";
   document.getElementById("cp").innerText="PC　0組";
-  document.getElementById("B13").src="photo/couple.png";
-  document.getElementById("B13").onclick="";
-  document.getElementById("B14").src="photo/clean.png";
-  document.getElementById("B14").onclick="";
+  document.getElementById("b13").innerText="2人";
+  document.getElementById("b13").onclick="";
+  document.getElementById("b14").innerText="";
+  document.getElementById("b14").onclick="";
+  document.getElementById("b14").style.visibility="hidden";
   document.getElementById("Uor").innerText="あなたの番です";
   flag=1;
 }
 
 
+
+
 function PCselect(){
   document.getElementById("Uor").innerText="PCの番です";
   setTimeout(stPC, 1000);
-  setTimeout(comparisioncp, 3000);
+  setTimeout(comparisioncp, 4000);
   PCfirst=true;
   PCsecond=true; 
 }
@@ -306,7 +315,7 @@ function select(id){
         }
         first=1;
         second=false;
-        document.getElementById("B14").src="photo/clean.png";
+        document.getElementById("b14").innerText="";
         Skip=true;
       }
     }
@@ -482,7 +491,6 @@ function CP3(){
 
 
 function comparision(){
-  console.log(K);
   if(B11==2){
     if(S1==S2){//１枚目と２枚目が同じ数字になった時
       let Element1=document.getElementById("A"+S1i+S1j);
@@ -537,11 +545,9 @@ function comparision(){
         document.getElementById("you").innerText="あなた　"+P+"組";
       }
       if(P+Pcp<B12){
-        console.log("ffffffffff")
         console.log(B13)
         if(B13==2){
           flag=-1;
-          console.log("EEEEEEEEEEE")
           PCselect();
         }else if(B13==1){
           flag=1;
@@ -619,25 +625,26 @@ function comparision(){
 
 function comparisionfor2(){
   if(S1!=S2){//１枚目と２枚目が違う
-    if(B13==1){
-    }else if(B13==2){
-      document.getElementById("B14").src="photo/skip.png";
-      document.getElementById("B14").onclick=skip;
+    if(B13==2){
+      document.getElementById("b15").innerText="SKIP";
+      document.getElementById("b15").onclick=skip;
       Skip=false;
     }
+  }else if(S1==S2){//1枚目と２枚目が一緒
+    Skip=true;
   }
 }
 
 
 function skip(){
   if(Skip==true){
-    document.getElementById("B14").src="photo/clean.png";
+    document.getElementById("b15").innerText="";
   }else{
     let Element1=document.getElementById("A"+S1i+S1j);
     Element1.src="photo/00.png";
     let Element2=document.getElementById("A"+S2i+S2j);
     Element2.src="photo/00.png";
-    document.getElementById("B14").src="photo/clean.png";
+    document.getElementById("b15").innerText="";
     Skip=true;
     brray.push(S1i,S2i);
     console.log("b="+brray);

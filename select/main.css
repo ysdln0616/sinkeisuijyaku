@@ -1,0 +1,31 @@
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #ffffff;
+    color: rgb(241, 2, 230);
+    border-bottom: solid 4px #b8b8b8;
+    border-radius: 3px;
+    height: 50px;
+    width: 80px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+#b13 {
+    visibility:hidden;
+}
+
+#b14 {
+    visibility:hidden;
+}
+
+#b15{
+    visibility:hidden;
+}

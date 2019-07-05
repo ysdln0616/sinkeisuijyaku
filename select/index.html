@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=4.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="preload" href="4function.js" as="script">
+  <link rel="stylesheet" href="main.css">
   <title>神経衰弱 選択制</title>
 </head>
 <body>
@@ -14,16 +15,15 @@
   <h2 id="you">枚数を選んでください</h2>
   <h2 id="cp"></h2>
   <h2 id="Uor"></h2>
-  <h2 id="reload">2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ</h2>
+  <h2 id="reload"></h2>
+  <h2 id="Description">2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ</h2>
 
-  
+  <button type="button" class="btn" id="b11" onclick="preselect2()">2枚</button>
+  <button type="button" class="btn" id="b12" onclick="preselect3()">3枚</button>
+  <button type="button" class="btn" id="b13" onclick=""></button>
+  <button type="button" class="btn" id="b14" onclick=""></button>
+  <button type="button" class="btn" id="b15" onclick=""></button>
   <table>
-        <tr>
-            <td><img id="B11" src="photo/2mai.png" alt="" height="80px" width="80px" onclick="preselect2()"></td>
-            <td><img id="B12" src="photo/3mai.png" alt="" height="80px" width="80px" onclick="preselect3()"></td>
-            <td><img id="B13" src="photo/clean.png" alt="" height="80px" width="80px" onclick=""></td>
-            <td><img id="B14" src="photo/clean.png" alt="" height="80px" width="80px" onclick=""></td>
-        </tr>
       <tr>
             <td><img id="A11" src="photo/clean.png" alt="" height="130px" width="80px" onclick="select('A11')"></td>
             <td><img id="A12" src="photo/clean.png" alt="" height="130px" width="80px" onclick="select('A12')"></td>
