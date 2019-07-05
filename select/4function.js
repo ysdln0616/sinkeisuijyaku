@@ -216,12 +216,32 @@ function couple(){
   document.getElementById("b13").innerText="2人";
   document.getElementById("b13").onclick="";
   document.getElementById("b14").innerText="";
-  document.getElementById("b14").onclick="";
-  document.getElementById("b14").style.visibility="hidden";
-  document.getElementById("Uor").innerText="あなたの番です";
+  document.getElementById("b14").onclick=firststrike;
+  document.getElementById("b15").style.visibility="visible";
+  document.getElementById("b15").onclick=secondstrike;
+  document.getElementById("b14").innerText="先攻";
+  document.getElementById("b15").innerText="後攻";
+  document.getElementById("Description").innerText="あなたが先攻か後攻か選んでください";
   flag=1;
 }
 
+
+function firststrike(){
+  document.getElementById("b14").onclick="";
+  document.getElementById("b15").onclick="";
+  document.getElementById("b15").style.visibility="hidden";
+  document.getElementById("Description").innerText="";
+}
+
+
+function secondstrike(){
+  document.getElementById("b14").innerText="後攻";
+  document.getElementById("b14").onclick="";
+  document.getElementById("b15").onclick="";
+  document.getElementById("b15").style.visibility="hidden";
+  document.getElementById("Description").innerText=""; 
+  PCselect()
+}
 
 
 
@@ -626,6 +646,7 @@ function comparision(){
 function comparisionfor2(){
   if(S1!=S2){//１枚目と２枚目が違う
     if(B13==2){
+      document.getElementById("b15").style.visibility="visible";
       document.getElementById("b15").innerText="SKIP";
       document.getElementById("b15").onclick=skip;
       Skip=false;
@@ -639,12 +660,14 @@ function comparisionfor2(){
 function skip(){
   if(Skip==true){
     document.getElementById("b15").innerText="";
+    document.getElementById("b15").style.visibility="hidden";
   }else{
     let Element1=document.getElementById("A"+S1i+S1j);
     Element1.src="photo/00.png";
     let Element2=document.getElementById("A"+S2i+S2j);
     Element2.src="photo/00.png";
     document.getElementById("b15").innerText="";
+    document.getElementById("b15").style.visibility="hidden";
     Skip=true;
     brray.push(S1i,S2i);
     console.log("b="+brray);
