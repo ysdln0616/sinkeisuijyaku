@@ -68,7 +68,6 @@ function select(id){
    if(first==true){
      if(second==false){
         comparision();
-        
       }else{ 
         for(i=0;i<=3;i++){//1枚目
           for(j=0;j<=3;j++){
