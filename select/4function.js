@@ -43,6 +43,7 @@ function divide(){//割り振った数字を3or4列に分けるための関数,�
 
 function preselect2(){//２枚組を選んだ時
   document.getElementById("b13").style.visibility="visible";
+  document.getElementById("b11").className="bun";
   document.getElementById("b12").innerText="6組";
   document.getElementById("b13").innerText="8組";
   document.getElementById("b11").onclick="";
@@ -72,6 +73,7 @@ function preselect26(){//2枚かつ6組
     }
   }
   document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").className="bun";
   document.getElementById("b12").onclick="";
   document.getElementById("b13").innerText="1人";
   document.getElementById("b13").onclick=alone;
@@ -104,6 +106,7 @@ function preselect28(){//2枚かつ8組
     }
   }
   document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").className="bun";
   document.getElementById("b12").innerText="8組";
   document.getElementById("b12").onclick="";
   document.getElementById("b13").innerText="1人";
@@ -122,6 +125,7 @@ function preselect28(){//2枚かつ8組
 
 function preselect3(){//3枚を選んだ時
   document.getElementById("b13").style.visibility="visible";
+  document.getElementById("b11").className="bun";
   document.getElementById("b11").innerText="3枚";
   document.getElementById("b12").innerText="4組";
   document.getElementById("b13").innerText="6組";
@@ -152,6 +156,7 @@ function preselect34(){//3枚かつ4組
     }
   }
   document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").className="bun";
   document.getElementById("b12").onclick="";
   document.getElementById("b13").innerText="1人";
   document.getElementById("b13").onclick=alone;
@@ -182,6 +187,7 @@ function preselect36(){//3枚かつ6組
     document.getElementById(N).onclick="";
   }
   document.getElementById("b14").style.visibility="visible";
+  document.getElementById("b12").className="bun";
   document.getElementById("b12").innerText="6組";
   document.getElementById("b12").onclick="";
   document.getElementById("b13").innerText="1人";
@@ -200,6 +206,7 @@ function preselect36(){//3枚かつ6組
 
 function alone(){
   B13=1;
+  document.getElementById("b13").className="bun";
   document.getElementById("you").innerText="0回　0組";
   document.getElementById("b13").onclick="";
   document.getElementById("b14").onclick="";
@@ -211,6 +218,7 @@ function alone(){
 
 function couple(){
   B13=2;
+  document.getElementById("b13").className="bun";
   document.getElementById("you").innerText="あなた　0組";
   document.getElementById("cp").innerText="PC　0組";
   document.getElementById("b13").innerText="2人";
@@ -225,6 +233,7 @@ function couple(){
 
 
 function firststrike(){
+  document.getElementById("b14").className="bun";
   document.getElementById("b14").onclick="";
   document.getElementById("b15").onclick="";
   document.getElementById("b15").style.visibility="hidden";
@@ -234,6 +243,7 @@ function firststrike(){
 
 
 function secondstrike(){
+  document.getElementById("b14").className="bun";
   document.getElementById("b14").innerText="後攻";
   document.getElementById("b14").onclick="";
   document.getElementById("b15").onclick="";
@@ -258,6 +268,7 @@ function select(id){
   if(flag===1){
     if(first==1){
       if(second==false){
+        document.getElementById("Description").innerText="";
         comparision();
       }else{ 
         for(i=0;i<B;i++){//1枚目
@@ -300,6 +311,7 @@ function select(id){
             document.getElementById("you").innerText="あなた　"+P+"組";
           }
           first=1;
+          document.getElementById("Description").innerText="任意のトランプを押してください";
           second=false;
         }
       }else if(B11==3){
@@ -334,8 +346,9 @@ function select(id){
           document.getElementById("you").innerText="あなた　"+K+"回 "+P+"組";
         }
         first=1;
+        document.getElementById("Description").innerText="任意のトランプを押してください";
         second=false;
-        document.getElementById("b14").innerText="";
+        document.getElementById("b15").style.visibility="hidden";
         Skip=true;
       }
     }
@@ -436,7 +449,6 @@ function CP1(){
     for(let E=1;E=50;E++){
       S1icp=Math.floor(Math.random()*Math.floor(4)+1);
       S1jcp=Math.floor(Math.random()*Math.floor(B2)+1);
-      console.log("CP1!()1枚目", S1icp, S1jcp);
       if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
         break;
       }
@@ -446,7 +458,6 @@ function CP1(){
     for(let E=1;E=50;E++){
       S1icp=Math.floor(Math.random()*Math.floor(3)+1);
       S1jcp=Math.floor(Math.random()*Math.floor(B12)+1);
-      console.log("CP1!()1枚目", S1icp, S1jcp);
       if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
         break;
       }
@@ -463,7 +474,6 @@ function CP2(){
     for(let R=1;R=24;R++){
       S2icp=Math.floor(Math.random()*Math.floor(4)+1);
       S2jcp=Math.floor(Math.random()*Math.floor(B2)+1);
-      console.log("CP2!()2枚目", S2icp, S2jcp);
       if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
         if(S1icp===S2icp&&S1jcp===S2jcp){
         }else{
@@ -476,7 +486,6 @@ function CP2(){
     for(let R=1;R=24;R++){
       S2icp=Math.floor(Math.random()*Math.floor(3)+1);
       S2jcp=Math.floor(Math.random()*Math.floor(B12)+1);
-      console.log("CP2!()2枚目", S2icp, S2jcp);
       if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
         if(S1icp===S2icp&&S1jcp===S2jcp){
         }else{
@@ -494,7 +503,6 @@ function CP3(){
   for(let R=1;R=24;R++){
     S3icp=Math.floor(Math.random()*Math.floor(3)+1);
     S3jcp=Math.floor(Math.random()*Math.floor(B12)+1);
-    console.log("CP3!()3枚目", S3icp, S3jcp);
     if(document.getElementById("A"+S3icp+S3jcp).src.indexOf("photo/00.png") > -1){
       if(S3icp===S1icp&&S3jcp===S1jcp){
       }else{
@@ -544,9 +552,6 @@ function comparision(){
           i--;
         }
       } 
-      console.log("b="+brray);
-      console.log("c="+crray);
-      console.log("d="+drray);
       flag=1;
     }else{ //１枚めと二枚めが違う数字の時
       let Element1=document.getElementById("A"+S1i+S1j);
@@ -554,18 +559,14 @@ function comparision(){
       let Element2=document.getElementById("A"+S2i+S2j);
       Element2.src="photo/00.png";
       brray.push(S1i,S2i);
-      console.log("b="+brray);
       crray.push(S1j,S2j);
-      console.log("c="+crray);
       drray.push(S1,S2);
-      console.log("d="+drray);
       if(B13==1){
         document.getElementById("you").innerText=+K+"回 "+P+"組";
       }else if(B13==2){ 
         document.getElementById("you").innerText="あなた　"+P+"組";
       }
       if(P+Pcp<B12){
-        console.log(B13)
         if(B13==2){
           flag=-1;
           PCselect();
@@ -610,9 +611,6 @@ function comparision(){
           i--;
         }
       }
-      console.log("b="+brray);
-      console.log("c="+crray);
-      console.log("d="+drray);
       flag=1; 
     }else{ //3まいが違う数字の時
       let Element1=document.getElementById("A"+S1i+S1j);
@@ -622,11 +620,8 @@ function comparision(){
       let Element3=document.getElementById("A"+S3i+S3j);
       Element3.src="photo/00.png";
       brray.push(S1i,S2i,S3i);
-      console.log("b="+brray);
       crray.push(S1j,S2j,S3j);
-      console.log("c="+crray);
       drray.push(S1,S2,S3);
-      console.log("d="+drray);
       if(P+Pcp<B12){
         flag=-1;
         if(B13==2){
@@ -670,11 +665,8 @@ function skip(){
     document.getElementById("b15").style.visibility="hidden";
     Skip=true;
     brray.push(S1i,S2i);
-    console.log("b="+brray);
     crray.push(S1j,S2j);
-    console.log("c="+crray);
     drray.push(S1,S2);
-    console.log("d="+drray);
     first=1;
     flag=-1;
     PCselect();
@@ -711,17 +703,11 @@ function comparisioncp(){
           i--;
         }
       }
-      console.log("b="+brray);
-      console.log("c="+crray);
-      console.log("d="+drray);
       flag=-1;
     }else{ //1枚目と２枚目が違う時
       brray.push(S1icp,S2icp);
-      console.log("b="+brray);
       crray.push(S1jcp,S2jcp);
-      console.log("c="+crray);
-      drray.push(S1cp,S2cp);
-      console.log("d="+drray);      
+      drray.push(S1cp,S2cp);     
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
       flag=1;
@@ -756,17 +742,11 @@ function comparisioncp(){
           i--;
         }
       }
-      console.log("b="+brray);
-      console.log("c="+crray);
-      console.log("d="+drray);
       flag=-1;
     }else{ //2n+1枚目を引いた時(n>=1)
       brray.push(S1icp,S2icp,S3icp);
-      console.log("b="+brray);
       crray.push(S1jcp,S2jcp,S3jcp);
-      console.log("c="+crray);
       drray.push(S1cp,S2cp,S3cp);
-      console.log("d="+drray);
       document.getElementById("A"+S1icp+S1jcp).src="photo/00.png";
       document.getElementById("A"+S2icp+S2jcp).src="photo/00.png";
       document.getElementById("A"+S3icp+S3jcp).src="photo/00.png";
