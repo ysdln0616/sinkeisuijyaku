@@ -236,6 +236,7 @@ function firststrike(){
 
 
 function secondstrike(){
+  flag=-1;
   document.getElementById("b14").innerText="後攻";
   document.getElementById("b14").onclick="";
   document.getElementById("b15").onclick="";
