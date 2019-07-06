@@ -120,7 +120,7 @@ function preselect28(){//2枚かつ8組
 }
 
 
-function preselect3(){
+function preselect3(){//3枚を選んだ時
   document.getElementById("b13").style.visibility="visible";
   document.getElementById("b11").innerText="3枚";
   document.getElementById("b12").innerText="4組";
@@ -205,6 +205,7 @@ function alone(){
   document.getElementById("b14").innerText="";
   document.getElementById("b14").onclick="";
   document.getElementById("b14").style.visibility="hidden";
+  document.getElementById("Description").innerText="";
   flag=1;
 }
 
