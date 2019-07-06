@@ -202,7 +202,6 @@ function alone(){
   B13=1;
   document.getElementById("you").innerText="0回　0組";
   document.getElementById("b13").onclick="";
-  document.getElementById("b14").innerText="";
   document.getElementById("b14").onclick="";
   document.getElementById("b14").style.visibility="hidden";
   document.getElementById("Description").innerText="";
@@ -216,14 +215,12 @@ function couple(){
   document.getElementById("cp").innerText="PC　0組";
   document.getElementById("b13").innerText="2人";
   document.getElementById("b13").onclick="";
-  document.getElementById("b14").innerText="";
   document.getElementById("b14").onclick=firststrike;
   document.getElementById("b15").style.visibility="visible";
   document.getElementById("b15").onclick=secondstrike;
   document.getElementById("b14").innerText="先攻";
   document.getElementById("b15").innerText="後攻";
   document.getElementById("Description").innerText="あなたが先攻か後攻か選んでください";
-  flag=1;
 }
 
 
@@ -232,16 +229,17 @@ function firststrike(){
   document.getElementById("b15").onclick="";
   document.getElementById("b15").style.visibility="hidden";
   document.getElementById("Description").innerText="";
+  flag=1;
 }
 
 
 function secondstrike(){
-  flag=-1;
   document.getElementById("b14").innerText="後攻";
   document.getElementById("b14").onclick="";
   document.getElementById("b15").onclick="";
   document.getElementById("b15").style.visibility="hidden";
   document.getElementById("Description").innerText=""; 
+  flag=-1;
   PCselect()
 }
 
