@@ -117,6 +117,7 @@ function preselect26(){//2枚かつ6組
   document.getElementById("b13").onclick="";
   document.getElementById("b13").className="bun";
   if(B13==1){
+    flag=1;
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
     document.getElementById("b14").innerText="先攻";
@@ -156,6 +157,7 @@ function preselect28(){//2枚かつ8組
   document.getElementById("b13").className="bun";
   document.getElementById("b13").innerText="8組";
   if(B13==1){
+    flag=1;
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
     document.getElementById("b14").innerText="先攻";
@@ -195,6 +197,7 @@ function preselect34(){//3枚かつ4組
   document.getElementById("b13").onclick="";
   document.getElementById("b13").className="bun";
   if(B13==1){
+    flag=1;
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
     document.getElementById("b14").innerText="先攻";
@@ -231,6 +234,7 @@ function preselect36(){//3枚かつ6組
   document.getElementById("b13").className="bun";
   document.getElementById("b13").innerText="6組";
   if(B13==1){
+    flag=1;
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
     document.getElementById("b14").innerText="先攻";
