@@ -1,10 +1,3 @@
-//1人2人
-//２枚3枚
-//組
-//先攻後攻
-
-
-//2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ
 
 let array=[];//トランプに数字を割り当てるための配列
 let PCfirst=true;//めくられたトランプが既出のものかどうかのflag
@@ -24,6 +17,7 @@ let second=true;//選んだカードを比べる関数を入れるためのflag,
 let flag=-1;//PCが動いてる時めくれないようにするためのflag,flag=1の時めくれてそれ以外ではめくれない
 let S1=S2=S3=0;//1,2,3枚目のトランプに書いてある数字
 let B13;//B13=1の時1人,B13=2の時2人の設定になるようにするためのflag
+let B=0;//行の数
 
 
 function divide(){//割り振った数字を3or4列に分けるための関数,ググった
@@ -46,19 +40,61 @@ function divide(){//割り振った数字を3or4列に分けるための関数,�
   }
 }
 
+function alone(){
+  B13=1;//1人でやる時
+  document.getElementById("b11").onclick="";
+  document.getElementById("b11").className="bun";//押したボタンを白抜きにする
+  document.getElementById("b12").innerText="２枚";
+  document.getElementById("b12").onclick=preselect2;
+  document.getElementById("b13").innerText="３枚";
+  document.getElementById("b13").onclick=preselect3;
+  document.getElementById("b13").style.visibility="visible";
+  document.getElementById("you").innerText="枚数を選んでください";
+  document.getElementById("Description").innerText="2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ";
+}
+
+function couple(){
+  B13=2;//2人でやる時
+  document.getElementById("b11").onclick="";
+  document.getElementById("b11").className="bun";//押したボタンを白抜きにする
+  document.getElementById("b11").innerText="対PC";
+  document.getElementById("b12").innerText="２枚";
+  document.getElementById("b12").onclick=preselect2;
+  document.getElementById("b13").innerText="３枚";
+  document.getElementById("b13").onclick=preselect3;
+  document.getElementById("b13").style.visibility="visible";
+  document.getElementById("you").innerText="枚数を選んでください";
+  document.getElementById("Description").innerText="2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ";
+}
+
 
 function preselect2(){//２枚組を選んだ時
-  document.getElementById("b14").style.visibility="visible";
+  B11=2;
+  document.getElementById("b12").onclick="";
   document.getElementById("b12").className="bun";
   document.getElementById("b13").innerText="6組";
-  document.getElementById("b14").innerText="8組";
-  document.getElementById("b12").onclick="";
   document.getElementById("b13").onclick=preselect26;
+  document.getElementById("b14").innerText="8組";
   document.getElementById("b14").onclick=preselect28;
+  document.getElementById("b14").style.visibility="visible";
   document.getElementById("you").innerText="組の数を選んでください";
   document.getElementById("Description").innerText="6組:1~6のトランプ　8組:1~8のトランプ";
-  B11=2;
-  B=4;
+  B=4;//４行
+}
+
+function preselect3(){//3枚を選んだ時
+  document.getElementById("b12").onclick="";
+  document.getElementById("b12").className="bun";
+  document.getElementById("b12").innerText="3枚";
+  document.getElementById("b13").innerText="4組";
+  document.getElementById("b13").onclick=preselect34;
+  document.getElementById("b14").innerText="6組";
+  document.getElementById("b14").onclick=preselect36;
+  document.getElementById("b14").style.visibility="visible";
+  document.getElementById("you").innerText="組の数を選んでください";
+  document.getElementById("Description").innerText="4組:1~4のトランプ　6組:1~6のトランプ";
+  B11=3;
+  B=3;//3行
 }
 
 
@@ -78,18 +114,18 @@ function preselect26(){//2枚かつ6組
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("b13").className="bun";
   document.getElementById("b13").onclick="";
+  document.getElementById("b13").className="bun";
   if(B13==1){
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
+    document.getElementById("b14").innerText="先攻";
+    document.getElementById("b14").onclick=firststrike;
+    document.getElementById("b15").innerText="後攻";
+    document.getElementById("b15").onclick=secondstrike;
     document.getElementById("b15").style.visibility="visible";
-  document.getElementById("b14").innerText="先攻";
-  document.getElementById("b14").onclick=firststrike;
-  document.getElementById("b15").innerText="後攻";
-  document.getElementById("b15").onclick=secondstrike;
-  document.getElementById("you").innerText="あなたが先攻か後攻か選んでください";
-  document.getElementById("Description").innerText="";
+    document.getElementById("you").innerText="あなたが先攻か後攻か選んでください";
+    document.getElementById("Description").innerText="";
   }
   divide();
   divideArray=array.divide(3);// ググってコピペした
@@ -116,17 +152,17 @@ function preselect28(){//2枚かつ8組
     }
   }
 
-  document.getElementById("b13").className="bun";
   document.getElementById("b13").onclick="";
+  document.getElementById("b13").className="bun";
   document.getElementById("b13").innerText="8組";
   if(B13==1){
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
+    document.getElementById("b14").innerText="先攻";
+    document.getElementById("b14").onclick=firststrike;
+    document.getElementById("b15").innerText="後攻";
+    document.getElementById("b15").onclick=secondstrike;
     document.getElementById("b15").style.visibility="visible";
-  document.getElementById("b14").innerText="先攻";
-  document.getElementById("b14").onclick=firststrike;
-  document.getElementById("b15").innerText="後攻";
-  document.getElementById("b15").onclick=secondstrike;
   document.getElementById("you").innerText="あなたが先攻か後攻か選んでください";
   document.getElementById("Description").innerText="";
   }
@@ -138,20 +174,6 @@ function preselect28(){//2枚かつ8組
 }
 
 
-function preselect3(){//3枚を選んだ時
-  document.getElementById("b14").style.visibility="visible";
-  document.getElementById("b12").className="bun";
-  document.getElementById("b12").innerText="3枚";
-  document.getElementById("b13").innerText="4組";
-  document.getElementById("b14").innerText="6組";
-  document.getElementById("b12").onclick="";
-  document.getElementById("b13").onclick=preselect34;
-  document.getElementById("b14").onclick=preselect36;
-  document.getElementById("you").innerText="組の数を選んでください";
-  document.getElementById("Description").innerText="4組:1~4のトランプ　6組:1~6のトランプ";
-  B11=3;
-  B=3;
-}
 
 
 function preselect34(){//3枚かつ4組
@@ -170,16 +192,16 @@ function preselect34(){//3枚かつ4組
       document.getElementById(N).onclick="";
     }
   }
-  document.getElementById("b13").className="bun";
   document.getElementById("b13").onclick="";
+  document.getElementById("b13").className="bun";
   if(B13==1){
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
+    document.getElementById("b14").innerText="先攻";
+    document.getElementById("b14").onclick=firststrike;
+    document.getElementById("b15").innerText="後攻";
+    document.getElementById("b15").onclick=secondstrike;
     document.getElementById("b15").style.visibility="visible";
-  document.getElementById("b14").innerText="先攻";
-  document.getElementById("b14").onclick=firststrike;
-  document.getElementById("b15").innerText="後攻";
-  document.getElementById("b15").onclick=secondstrike;
   document.getElementById("you").innerText="あなたが先攻か後攻か選んでください";
   document.getElementById("Description").innerText="";
   }
@@ -205,18 +227,17 @@ function preselect36(){//3枚かつ6組
     N="A4"+i;
     document.getElementById(N).onclick="";
   }
-
-  document.getElementById("b13").className="bun";
   document.getElementById("b13").onclick="";
+  document.getElementById("b13").className="bun";
   document.getElementById("b13").innerText="6組";
   if(B13==1){
     document.getElementById("b14").style.visibility="hidden";
   }else if(B13==2){
+    document.getElementById("b14").innerText="先攻";
+    document.getElementById("b14").onclick=firststrike;
+    document.getElementById("b15").innerText="後攻";
+    document.getElementById("b15").onclick=secondstrike;
     document.getElementById("b15").style.visibility="visible";
-  document.getElementById("b14").innerText="先攻";
-  document.getElementById("b14").onclick=firststrike;
-  document.getElementById("b15").innerText="後攻";
-  document.getElementById("b15").onclick=secondstrike;
   document.getElementById("you").innerText="あなたが先攻か後攻か選んでください";
   document.getElementById("Description").innerText="";
   }     
@@ -228,55 +249,23 @@ function preselect36(){//3枚かつ6組
 }
 
 
-function alone(){
-  B13=1;
-  document.getElementById("b11").onclick="";
-  document.getElementById("b11").className="bun";
-  document.getElementById("you").innerText="枚数を選んでください";
-  document.getElementById("b12").onclick=preselect2;
-  document.getElementById("b12").innerText="２枚";
-  document.getElementById("b13").onclick=preselect3;
-  document.getElementById("b13").innerText="３枚";
-  document.getElementById("b13").style.visibility="visible";
-  document.getElementById("b14").style.visibility="hidden";
-  document.getElementById("Description").innerText="2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ";
-  flag=1;
-}
-
-
-function couple(){
-  B13=2;
-  document.getElementById("b11").onclick="";
-  document.getElementById("b11").className="bun";
-  document.getElementById("you").innerText="枚数を選んでください";
-  document.getElementById("b11").innerText="対PC";
-  document.getElementById("b12").onclick=preselect2;
-  document.getElementById("b12").innerText="２枚";
-  document.getElementById("b13").onclick=preselect3;
-  document.getElementById("b13").innerText="３枚";
-  document.getElementById("b13").style.visibility="visible";
-  document.getElementById("b14").style.visibility="hidden";
-  document.getElementById("Description").innerText="2枚:2枚同じ数字を選ぶ　3枚:3枚同じ数字を選ぶ";
-}
-
-
 function firststrike(){
-  document.getElementById("b14").className="bun";
   document.getElementById("b14").onclick="";
+  document.getElementById("b14").className="bun";
   document.getElementById("b15").onclick="";
   document.getElementById("b15").style.visibility="hidden";
   document.getElementById("you").innerText="あなた　"+K+"組";
   document.getElementById("cp").innerText="PC　　"+K+"組";
-  document.getElementById("Ure").innerText="あなたの版です";
+  document.getElementById("Uor").innerText="あなたの番です";
   document.getElementById("Description").innerText="";
   flag=1;
 }
 
 
 function secondstrike(){
+  document.getElementById("b14").onclick="";
   document.getElementById("b14").className="bun";
   document.getElementById("b14").innerText="後攻";
-  document.getElementById("b14").onclick="";
   document.getElementById("b15").onclick="";
   document.getElementById("b15").style.visibility="hidden";
   document.getElementById("you").innerText="あなた　"+K+"組";
@@ -685,29 +674,6 @@ function comparisionfor2(){
 }
 
 
-function skip(){
-  if(Skip==true){
-    document.getElementById("b15").innerText="";
-    document.getElementById("b15").style.visibility="hidden";
-  }else{
-    let Element1=document.getElementById("A"+S1i+S1j);
-    Element1.src="photo/00.png";
-    let Element2=document.getElementById("A"+S2i+S2j);
-    Element2.src="photo/00.png";
-    document.getElementById("b15").innerText="";
-    document.getElementById("b15").style.visibility="hidden";
-    Skip=true;
-    brray.push(S1i,S2i);
-    crray.push(S1j,S2j);
-    drray.push(S1,S2);
-    first=1;
-    flag=-1;
-    PCselect();
-    second=true;
-  }
-}
-
-
 function comparisioncp(){
   if(B11==2){
     if(S1cp===S2cp){//１枚目と２枚目が同じ数字になった時
@@ -786,5 +752,27 @@ function comparisioncp(){
       flag=1; 
       document.getElementById("Uor").innerText="あなたの番です";
     }
+  }
+}
+
+function skip(){
+  if(Skip==true){
+    document.getElementById("b15").innerText="";
+    document.getElementById("b15").style.visibility="hidden";
+  }else{
+    let Element1=document.getElementById("A"+S1i+S1j);
+    Element1.src="photo/00.png";
+    let Element2=document.getElementById("A"+S2i+S2j);
+    Element2.src="photo/00.png";
+    document.getElementById("b15").innerText="";
+    document.getElementById("b15").style.visibility="hidden";
+    Skip=true;
+    brray.push(S1i,S2i);
+    crray.push(S1j,S2j);
+    drray.push(S1,S2);
+    first=1;
+    flag=-1;
+    PCselect();
+    second=true;
   }
 }
