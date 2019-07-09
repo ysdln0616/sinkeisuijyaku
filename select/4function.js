@@ -294,7 +294,7 @@ function select(id){
   if(flag===1){
     if(first==1){
       if(second==false){
-        document.getElementById("Description").innerText="";
+        document.getElementById("Description").innerText="🃏";
         comparision();
       }else{ 
         for(i=0;i<B;i++){//1枚目
