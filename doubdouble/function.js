@@ -129,38 +129,32 @@ let S1cp;
 let S2cp;
 
 
-function CP1(){
+function CP1(){//1枚目
   for(let E=1;E=16;E++){
-  S1icp=Math.floor(Math.random()*Math.floor(4)+1);
-  S1jcp=Math.floor(Math.random()*Math.floor(4)+1);
-  
-  console.log("CP1()1枚目", S1icp, S1jcp);
-  
-   if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
-     break;
-   }
+    S1icp=Math.floor(Math.random()*Math.floor(4)+1);
+    S1jcp=Math.floor(Math.random()*Math.floor(4)+1);
+    if(document.getElementById("A"+S1icp+S1jcp).src.indexOf("photo/00.png") > -1){
+      break;
+    }
   }
+  document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
+  S1cp=divideArray[S1icp-1][S1jcp-1];
+}
 
-      document.getElementById("A"+S1icp+S1jcp).src="photo/0"+divideArray[S1icp-1][S1jcp-1]+".png";
-      S1cp=divideArray[S1icp-1][S1jcp-1];
-      
+function CP2(){
+  for(let R=1;R=16;R++){
+    S2icp=Math.floor(Math.random()*Math.floor(4)+1);
+    S2jcp=Math.floor(Math.random()*Math.floor(4)+1);
+    if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
+      if(S1icp==S2icp&&S1jcp==S2jcp){
+      }else{
+        break;
+      }
+    }
   }
-
-  function CP2(){
-    for(let R=1;R=16;R++){
-  S2icp=Math.floor(Math.random()*Math.floor(4)+1);
-  S2jcp=Math.floor(Math.random()*Math.floor(4)+1);
-  console.log("CP2()2枚目", S2icp, S2jcp);
-   if(document.getElementById("A"+S2icp+S2jcp).src.indexOf("photo/00.png") > -1){
-     if(S1icp==S2icp&&S1jcp==S2jcp){
-     }else{
-     break;
-     }
-   }
-  }
-      document.getElementById("A"+S2icp+S2jcp).src="photo/0"+divideArray[S2icp-1][S2jcp-1]+".png";
-      S2cp=divideArray[S2icp-1][S2jcp-1];
-  }
+  document.getElementById("A"+S2icp+S2jcp).src="photo/0"+divideArray[S2icp-1][S2jcp-1]+".png";
+  S2cp=divideArray[S2icp-1][S2jcp-1];
+}
 
   function comparision(){
     if(S1==S2){//１枚目と２枚目が同じ数字になった時
